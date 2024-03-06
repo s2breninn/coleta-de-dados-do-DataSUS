@@ -1,12 +1,13 @@
 import urllib.request
-from tqdm import tqdm # lib mostra a progressão do download
 from multiprocessing import Pool
 import sys
-
-
+import os
+'''
+# Camiho absoluto do diretório
+lib_path = os.path.abspath('../../lib/dttools.py')'''
 # Importando função feita na pasta /lib/
 # Função que gera um range de datas a partir de uma data inicial até a final setada pelo usuário
-sys.path.insert(1, '../../lib/')
+sys.path.insert(1, '../../lib')
 import dttools
 
 # Função passando endereço url fdp e salvando os arquivos em um diretorio setado
@@ -19,7 +20,7 @@ def get_data_uf_ano_mes(uf, ano, mes):
 
 # Função para padronização de datas para salvar arquivos de forma dinâmica a partir das datas(mes, ano) e uf
 def get_data_uf(uf, datas):
-    for i in tqdm(datas):
+    for i in datas:
         ano, mes, dia = i.split('-')
         ano = ano[-2:]
         get_data_uf_ano_mes(uf, ano, mes)
